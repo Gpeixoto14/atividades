@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sorteio de Atividades</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #f4f4f4;
+    }
+    .container {
+      text-align: center;
+      background-color: white;
+      padding: 20px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+    }
+    button {
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      padding: 15px 32px;
+      font-size: 16px;
+      cursor: pointer;
+      border-radius: 5px;
+      margin-top: 20px;
+    }
+    button:hover {
+      background-color: #45a049;
+    }
+    .result {
+      margin-top: 20px;
+      font-size: 18px;
+      font-weight: bold;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>Sorteio de Atividades</h1>
+    <button id="sorteioBtn">Fazer o Sorteio</button>
+    <div id="resultado" class="result"></div>
+  </div>
+
+  <script>
+    // Listas de atividades
+    const atividadesMaisElaboradas = [
+      "Ir visitar uma cidade portuguesa que nenhum foi",
+      "Irem experimentar um desporto que nenhum tenha experimentado",
+      "Ir ver um evento desportivo ao vivo",
+      "Ir ao teatro",
+      "Escolher aleatoriamente um sítio em Portugal e ir passar o fds",
+      "Inscrevemo-nos num workshop",
+      "Ir acampar",
+      "Ir a um museu ou algo cultural",
+      "Fazer a rota vicentina, ou uma mini rota",
+      "Ir à Serra da Estrela/Gerês",
+      "Passar uma noite num hotel"
+    ];
+
+    const atividadesSimples = [
+      "Comprar um puzzle e fazer",
+      "Cozinhar juntos",
+      "Ir comer fora",
+      "Fazer um piquenique",
+      "Ir passear à beira-mar",
+      "Abrir um bom vinho e comer queijos e enchidos",
+      "Ir ao shopping e oferecer uma prenda um ao outro",
+      "Ir ao cinema",
+      "Tirar um ao calhas, e essa pessoa cozinha para a outra",
+      "Jogar um jogo de tabuleiro",
+      "Criar um jogo",
+      "Ir a uma loja erótica",
+      "Ir praticar qualquer desporto",
+      "Fazer uma massagem um ao outro",
+      "Fazer uma maratona de uma série"
+    ];
+
+    // Função para fazer o sorteio
+    function sorteio(atividades) {
+      return atividades[Math.floor(Math.random() * atividades.length)];
+    }
+
+    // Função que faz o sorteio quando o botão é clicado
+    document.getElementById("sorteioBtn").onclick = function() {
+      const tipoSorteio = Math.random() > 0.5 ? "elaborada" : "simples";
+      let atividadeSorteada;
+
+      if (tipoSorteio === "elaborada") {
+        atividadeSorteada = sorteio(atividadesMaisElaboradas);
+      } else {
+        atividadeSorteada = sorteio(atividadesSimples);
+      }
+
+      document.getElementById("resultado").innerText = `Atividade Sorteada: ${atividadeSorteada}`;
+    };
+  </script>
+
+</body>
+</html>
